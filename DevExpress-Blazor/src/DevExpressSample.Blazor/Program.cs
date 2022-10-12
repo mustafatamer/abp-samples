@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DevExpressSample.Blazor
 {
@@ -8,7 +9,7 @@ namespace DevExpressSample.Blazor
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
-
+            builder.Services.AddDevExpressBlazor(configure => configure.BootstrapVersion = DevExpress.Blazor.BootstrapVersion.v5);
             var application = builder.AddApplication<DevExpressSampleBlazorModule>(options =>
             {
                 options.UseAutofac();
